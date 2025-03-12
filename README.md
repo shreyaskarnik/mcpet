@@ -2,6 +2,8 @@
 
 ![MCPet](./image.webp)
 
+[![smithery badge](https://smithery.ai/badge/@shreyaskarnik/mcpet)](https://smithery.ai/service/@shreyaskarnik/mcpet)
+
 MCPet: A nostalgic virtual pet experience for the AI age! This [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server lets you adopt, nurture, and play with your very own digital companion that evolves based on your care. Feed them, clean them, play games together, and watch them grow from a baby to an adult. Your pet's stats change over time even when you're away - just like the classic Tamagotchi toys, but powered by modern AI through the Model Context Protocol. Adopt your digital friend today!
 
 This is a TypeScript-based MCP server that implements a virtual pet simulation system. It demonstrates core MCP concepts by providing tools for pet care and interaction.
@@ -81,6 +83,14 @@ npm run watch
 ```
 
 ## Installation
+
+### Installing via Smithery
+
+To install MCPet for Claude Desktop automatically via [Smithery](https://smithery.ai/service/@shreyaskarnik/mcpet):
+
+```bash
+npx -y @smithery/cli install @shreyaskarnik/mcpet --client claude
+```
 
 To use with Claude Desktop, add the server config:
 
