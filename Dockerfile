@@ -1,26 +1,28 @@
-FROM node:20-alpine
+FROM node:22.12-alpine AS builder
 
-# Create app directory
+COPY . /app
+COPY tsconfig.json /tsconfig.json
+
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+RUN --mount=type=cache,target=/root/.npm npm install
 
-# Install dependencies
-RUN npm install
+RUN --mount=type=cache,target=/root/.npm-production npm ci --ignore-scripts --omit-dev
 
-# Copy source code
-COPY tsconfig.json ./
-COPY src/ ./src/
+FROM node:22-alpine AS release
 
-# Build the TypeScript project
-RUN npm run build
+COPY --from=builder /app/build /app/build
+COPY --from=builder /app/package.json /app/package.json
+COPY --from=builder /app/package-lock.json /app/package-lock.json
 
-# Create a volume for persistent pet data
-VOLUME /data
+ENV NODE_ENV=production
+
+WORKDIR /app
+
+RUN npm ci --ignore-scripts --omit-dev
 
 # Set environment variable for pet data storage
 ENV PET_DATA_DIR=/data
 
 # Set the command to run the server
-CMD ["node", "build/index.js"]
+ENTRYPOINT ["node", "build/index.js"]
