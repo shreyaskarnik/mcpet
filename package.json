@@ -1,0 +1,26 @@
+{
+  "name": "mcpet",
+  "version": "0.1.0",
+  "description": "MCPet: A nostalgic virtual pet experience for the AI age! This MCP server lets you adopt, nurture, and play with your very own digital companion that evolves based on your care. Feed them, clean them, play games together, and watch them grow from a baby to an adult. Your pet&#39;s stats change over time even when you&#39;re away - just like the classic Tamagotchi toys, but powered by modern AI through the Model Context Protocol. Adopt your digital friend today!",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "MCPet ": "./build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector build/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "0.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  }
+}
