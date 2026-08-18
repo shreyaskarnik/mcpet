@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/shreyaskarnik-mcpet-badge.png)](https://mseep.ai/app/shreyaskarnik-mcpet)
+
 # MCPet
 
 ![MCPet](./image.webp)
